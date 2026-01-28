@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://talentsmith.co.in/sitemap.xml
