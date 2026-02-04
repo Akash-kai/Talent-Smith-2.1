@@ -1,6 +1,6 @@
 // ============================================
-// TALENTSMITH - FINAL JAVASCRIPT (PREMIUM)
-// Auto Slider + Manual Arrows + Dots + Pause + Resume
+// TALENTSMITH - BEST FINAL JAVASCRIPT
+// Clean + Responsive + No Bugs
 // ============================================
 
 let currentCategory = "";
@@ -15,10 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initThemeToggle();
   initSmoothScroll();
   initScrollAnimations();
+  initAutoCarousels();
   initServiceModalForm();
-
-  // ✅ PREMIUM Sliders Setup
-  initAllPremiumSliders();
 
 });
 
@@ -64,10 +62,11 @@ function initThemeToggle() {
 
 
 // ============================================
-// ✅ Smooth Scroll Navigation
+// ✅ Smooth Scroll Navigation + Buttons
 // ============================================
 function initSmoothScroll() {
 
+  // Navbar anchor smooth scroll
   document.querySelectorAll("a[href^='#']").forEach(link => {
 
     link.addEventListener("click", (e) => {
@@ -97,7 +96,53 @@ function scrollToSection(id) {
   const section = document.getElementById(id);
   if (!section) return;
 
-  section.scrollIntoView({ behavior: "smooth" });
+  window.scrollTo({
+    top: section.offsetTop - 90,
+    behavior: "smooth"
+  });
+
+}
+
+
+// ============================================
+// ✅ Auto Sliding Carousel (Services + Reviews)
+// ============================================
+function initAutoCarousels() {
+
+  const carousels = document.querySelectorAll(".services-carousel");
+
+  carousels.forEach(carousel => {
+
+    let scrollPos = 0;
+    const cardWidth = 332;
+    let paused = false;
+
+    function slide() {
+
+      if (paused) return;
+
+      const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+      scrollPos += cardWidth;
+
+      if (scrollPos >= maxScroll) {
+        scrollPos = 0;
+      }
+
+      carousel.scrollTo({
+        left: scrollPos,
+        behavior: "smooth"
+      });
+
+    }
+
+    // Auto Slide
+    let interval = setInterval(slide, 3200);
+
+    // Pause on Hover
+    carousel.addEventListener("mouseenter", () => paused = true);
+    carousel.addEventListener("mouseleave", () => paused = false);
+
+  });
 
 }
 
@@ -207,6 +252,7 @@ function initServiceModalForm() {
       return;
     }
 
+    // ✅ Your WhatsApp Number
     const businessNumber = "919218570401";
 
     const message =
@@ -230,7 +276,8 @@ function initServiceModalForm() {
 
   });
 
-  // Close modal when clicking outside
+
+  // Close modal when clicking outside box
   window.addEventListener("click", (e) => {
 
     const modal = document.getElementById("serviceModal");
@@ -242,126 +289,9 @@ function initServiceModalForm() {
   });
 
 }
-// ============================================
-// ✅ PREMIUM AUTO + MANUAL SLIDER SYSTEM (FIXED)
-// ============================================
-
-function initPremiumSlider(sliderId, dotsId) {
-  const slider = document.getElementById(sliderId);
-  const dotsBox = document.getElementById(dotsId);
-
-  if (!slider || !dotsBox) return;
-
-  const cards = slider.querySelectorAll(".service-card");
-  let index = 0;
-  let autoInterval;
-
-  // Step size (Card width + gap)
-  function getStep() {
-    return cards[0].offsetWidth + 32;
+function scrollToSection(id) {
+  const section = document.getElementById(id);
+  if (section) {
+    section.scrollIntoView({ behavior: "smooth" });
   }
-
-  // ============================================
-  // ✅ Create Dots
-  // ============================================
-  dotsBox.innerHTML = "";
-
-  cards.forEach((_, i) => {
-    const dot = document.createElement("span");
-
-    dot.addEventListener("click", () => {
-      moveToSlide(i);
-      restartAuto();
-    });
-
-    dotsBox.appendChild(dot);
-  });
-
-  const dots = dotsBox.querySelectorAll("span");
-
-  // ============================================
-  // ✅ Update Active Dot
-  // ============================================
-  function updateDots() {
-    dots.forEach(dot => dot.classList.remove("active"));
-    if (dots[index]) dots[index].classList.add("active");
-  }
-
-  // ============================================
-  // ✅ Move Slider Correctly
-  // ============================================
-  function moveToSlide(i) {
-    index = i;
-
-    slider.scrollTo({
-      left: index * getStep(),
-      behavior: "smooth"
-    });
-
-    setTimeout(updateDots, 300);
-  }
-
-  // ============================================
-  // ✅ Auto Slide Start
-  // ============================================
-  function startAuto() {
-    autoInterval = setInterval(() => {
-      index = (index + 1) % cards.length;
-      moveToSlide(index);
-    }, 3500);
-  }
-
-  function stopAuto() {
-    clearInterval(autoInterval);
-  }
-
-  function restartAuto() {
-    stopAuto();
-    setTimeout(startAuto, 4000);
-  }
-
-  // ============================================
-  // ✅ Arrow Controls (No Overwrite Bug)
-  // ============================================
-  document.querySelectorAll(`[data-left="${sliderId}"]`).forEach(btn => {
-    btn.onclick = () => {
-      index = index > 0 ? index - 1 : cards.length - 1;
-      moveToSlide(index);
-      restartAuto();
-    };
-  });
-
-  document.querySelectorAll(`[data-right="${sliderId}"]`).forEach(btn => {
-    btn.onclick = () => {
-      index = index < cards.length - 1 ? index + 1 : 0;
-      moveToSlide(index);
-      restartAuto();
-    };
-  });
-
-  // ============================================
-  // ✅ Sync Dots on Manual Scroll (Mobile Swipe)
-  // ============================================
-  slider.addEventListener("scroll", () => {
-    index = Math.round(slider.scrollLeft / getStep());
-    updateDots();
-  });
-
-  // Pause on Hover
-  slider.addEventListener("mouseenter", stopAuto);
-  slider.addEventListener("mouseleave", startAuto);
-
-  // Start Default
-  moveToSlide(0);
-  startAuto();
 }
-
-// ============================================
-// ✅ INIT ALL PREMIUM SLIDERS
-// ============================================
-window.onload = function () {
-  initPremiumSlider("why-carousel", "why-dots");
-  initPremiumSlider("business-carousel", "business-dots");
-  initPremiumSlider("jobseekers-carousel", "jobseekers-dots");
-  initPremiumSlider("reviews-carousel", "reviews-dots");
-};
