@@ -1534,4 +1534,143 @@ body.light-mode .footer a:hover {
     flex: 0 0 85%;
   }
 }
+/* ============================================
+   ✅ PREMIUM GOOGLE STYLE SLIDER (FINAL)
+   Arrows + Dots + Center Layout + Responsive
+============================================ */
+
+/* Slider Wrapper */
+.slider-wrapper {
+  position: relative;
+  width: 100%;
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+}
+
+/* Slider Track */
+.slider {
+  display: flex;
+  gap: 2rem;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  padding: 35px 0;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+/* Each Card Fixed Size */
+.slider .service-card {
+  flex: 0 0 320px;
+}
+
+/* ============================================
+   Arrow Buttons (Google Style)
+============================================ */
+
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-size: 2rem;
+  color: white;
+  z-index: 99;
+
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: 0.3s ease;
+}
+
+.slider-btn:hover {
+  background: rgba(0, 212, 255, 0.35);
+  transform: translateY(-50%) scale(1.15);
+}
+
+/* Arrow Position */
+.slider-btn.left {
+  left: -60px;
+}
+
+.slider-btn.right {
+  right: -60px;
+}
+
+/* ============================================
+   Dots Navigation (Premium)
+============================================ */
+
+.slider-dots {
+  text-align: center;
+  margin-top: 18px;
+}
+
+.slider-dots span {
+  width: 11px;
+  height: 11px;
+  background: rgba(255, 255, 255, 0.25);
+  display: inline-block;
+  margin: 6px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.slider-dots span.active {
+  background: var(--primary);
+  transform: scale(1.5);
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.6);
+}
+
+/* ============================================
+   Responsive Slider Fix
+============================================ */
+
+@media (max-width: 992px) {
+  .slider-btn.left {
+    left: -20px;
+  }
+
+  .slider-btn.right {
+    right: -20px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .slider {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 25px 0;
+  }
+
+  .slider .service-card {
+    flex: 0 0 85%;
+    scroll-snap-align: center;
+  }
+
+  .slider-btn {
+    width: 45px;
+    height: 45px;
+    font-size: 1.6rem;
+  }
+
+  .slider-btn.left {
+    left: 8px;
+  }
+
+  .slider-btn.right {
+    right: 8px;
+  }
+}
+
 
