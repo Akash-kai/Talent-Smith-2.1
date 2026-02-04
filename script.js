@@ -242,25 +242,21 @@ function initServiceModalForm() {
   });
 
 }
-
-
 // ============================================
-// ✅ PREMIUM AUTO + MANUAL SLIDER SYSTEM
+// ✅ PREMIUM AUTO + MANUAL SLIDER SYSTEM (FIXED)
 // ============================================
 
 function initPremiumSlider(sliderId, dotsId) {
-
   const slider = document.getElementById(sliderId);
   const dotsBox = document.getElementById(dotsId);
 
   if (!slider || !dotsBox) return;
 
   const cards = slider.querySelectorAll(".service-card");
-
+  let index = 0;
   let autoInterval;
-  let userPaused = false;
 
-  // Step size
+  // Step size (Card width + gap)
   function getStep() {
     return cards[0].offsetWidth + 32;
   }
@@ -270,141 +266,102 @@ function initPremiumSlider(sliderId, dotsId) {
   // ============================================
   dotsBox.innerHTML = "";
 
-  cards.forEach((_, index) => {
-
+  cards.forEach((_, i) => {
     const dot = document.createElement("span");
 
     dot.addEventListener("click", () => {
-
-      pauseAuto();
-
-      slider.scrollTo({
-        left: index * getStep(),
-        behavior: "smooth"
-      });
-
-      setTimeout(updateDots, 400);
-
+      moveToSlide(i);
+      restartAuto();
     });
 
     dotsBox.appendChild(dot);
-
   });
+
+  const dots = dotsBox.querySelectorAll("span");
 
   // ============================================
   // ✅ Update Active Dot
   // ============================================
   function updateDots() {
-
-    const dots = dotsBox.querySelectorAll("span");
-    const index = Math.round(slider.scrollLeft / getStep());
-
     dots.forEach(dot => dot.classList.remove("active"));
-
     if (dots[index]) dots[index].classList.add("active");
+  }
+
+  // ============================================
+  // ✅ Move Slider Correctly
+  // ============================================
+  function moveToSlide(i) {
+    index = i;
+
+    slider.scrollTo({
+      left: index * getStep(),
+      behavior: "smooth"
+    });
+
+    setTimeout(updateDots, 300);
   }
 
   // ============================================
   // ✅ Auto Slide Start
   // ============================================
   function startAuto() {
-
     autoInterval = setInterval(() => {
-
-      if (userPaused) return;
-
-      const maxScroll = slider.scrollWidth - slider.clientWidth;
-      const nextScroll = slider.scrollLeft + getStep();
-
-      if (nextScroll >= maxScroll - 5) {
-        slider.scrollTo({ left: 0, behavior: "smooth" });
-      } else {
-        slider.scrollBy({ left: getStep(), behavior: "smooth" });
-      }
-
-      updateDots();
-
-    }, 3000);
-
+      index = (index + 1) % cards.length;
+      moveToSlide(index);
+    }, 3500);
   }
 
   function stopAuto() {
     clearInterval(autoInterval);
   }
 
-  // ============================================
-  // ✅ Pause + Resume After Interaction
-  // ============================================
-  function pauseAuto() {
-
-    userPaused = true;
+  function restartAuto() {
     stopAuto();
-
-    setTimeout(() => {
-      userPaused = false;
-      startAuto();
-    }, 4000);
-
+    setTimeout(startAuto, 4000);
   }
 
   // ============================================
-  // ✅ Global Arrow Functions
+  // ✅ Arrow Controls (No Overwrite Bug)
   // ============================================
-  window.slideLeft = function (id, dotsId) {
+  document.querySelectorAll(`[data-left="${sliderId}"]`).forEach(btn => {
+    btn.onclick = () => {
+      index = index > 0 ? index - 1 : cards.length - 1;
+      moveToSlide(index);
+      restartAuto();
+    };
+  });
 
-    if (id !== sliderId) return;
+  document.querySelectorAll(`[data-right="${sliderId}"]`).forEach(btn => {
+    btn.onclick = () => {
+      index = index < cards.length - 1 ? index + 1 : 0;
+      moveToSlide(index);
+      restartAuto();
+    };
+  });
 
-    pauseAuto();
-
-    slider.scrollBy({
-      left: -getStep(),
-      behavior: "smooth"
-    });
-
-    setTimeout(updateDots, 400);
-
-  };
-
-  window.slideRight = function (id, dotsId) {
-
-    if (id !== sliderId) return;
-
-    pauseAuto();
-
-    slider.scrollBy({
-      left: getStep(),
-      behavior: "smooth"
-    });
-
-    setTimeout(updateDots, 400);
-
-  };
+  // ============================================
+  // ✅ Sync Dots on Manual Scroll (Mobile Swipe)
+  // ============================================
+  slider.addEventListener("scroll", () => {
+    index = Math.round(slider.scrollLeft / getStep());
+    updateDots();
+  });
 
   // Pause on Hover
   slider.addEventListener("mouseenter", stopAuto);
   slider.addEventListener("mouseleave", startAuto);
 
-  // Pause on Touch / Scroll
-  slider.addEventListener("touchstart", pauseAuto);
-  slider.addEventListener("mousedown", pauseAuto);
-  slider.addEventListener("wheel", pauseAuto);
-
-  slider.addEventListener("scroll", updateDots);
-
-  // Start slider
-  updateDots();
+  // Start Default
+  moveToSlide(0);
   startAuto();
 }
-
 
 // ============================================
 // ✅ INIT ALL PREMIUM SLIDERS
 // ============================================
-function initAllPremiumSliders() {
-
+window.onload = function () {
   initPremiumSlider("why-carousel", "why-dots");
   initPremiumSlider("business-carousel", "business-dots");
   initPremiumSlider("jobseekers-carousel", "jobseekers-dots");
   initPremiumSlider("reviews-carousel", "reviews-dots");
-
-}
+};
