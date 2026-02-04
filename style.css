@@ -1401,17 +1401,4 @@ body.light-mode .footer li {
 body.light-mode .footer a:hover {
   color: var(--primary) !important;
 }
-.services-carousel {
-    cursor: grab;
-    scroll-behavior: smooth;
-    scroll-snap-type: x mandatory;
-}
-
-.service-card {
-    scroll-snap-align: start;
-}
-
-.services-carousel:active {
-    cursor: grabbing;
-}
 
