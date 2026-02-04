@@ -89,7 +89,6 @@
         </div>
     </section>
 
-
     <!-- WHY US -->
     <section class="why-us" id="why-us">
         <div class="container">
@@ -99,10 +98,11 @@
                 Modern HR Consultancy in Chandigarh & Tricity — trusted by Businesses & Job Seekers.
             </p>
 
-            <!-- ✅ WHY US SLIDER -->
+            <!-- WHY US SLIDER -->
             <div class="slider-wrapper">
 
-                <button class="slider-btn left" onclick="slideLeft('why-carousel')">❮</button>
+                <button class="slider-btn left"
+                    onclick="slideLeft('why-carousel','why-dots')">❮</button>
 
                 <div class="services-carousel slider" id="why-carousel">
 
@@ -157,7 +157,8 @@
 
                 </div>
 
-                <button class="slider-btn right" onclick="slideRight('why-carousel')">❯</button>
+                <button class="slider-btn right"
+                    onclick="slideRight('why-carousel','why-dots')">❯</button>
 
             </div>
 
@@ -165,7 +166,6 @@
 
         </div>
     </section>
-
 
     <!-- SERVICES -->
     <section class="services" id="services">
@@ -179,14 +179,13 @@
             <div class="service-category">
                 <h3 class="category-title">For Businesses / Employers</h3>
 
-                <!-- ✅ BUSINESS SLIDER -->
                 <div class="slider-wrapper">
 
-                    <button class="slider-btn left" onclick="slideLeft('business-carousel')">❮</button>
+                    <button class="slider-btn left"
+                        onclick="slideLeft('business-carousel','business-dots')">❮</button>
 
                     <div class="services-carousel slider" id="business-carousel">
 
-                        <!-- Cards unchanged -->
                         <div class="service-card" onclick="openServiceModal('Business','Hiring & Recruitment')">
                             <div class="service-icon">🔍</div>
                             <h4>Hiring & Recruitment</h4>
@@ -237,22 +236,22 @@
 
                     </div>
 
-                    <button class="slider-btn right" onclick="slideRight('business-carousel')">❯</button>
+                    <button class="slider-btn right"
+                        onclick="slideRight('business-carousel','business-dots')">❯</button>
 
                 </div>
 
                 <div class="slider-dots" id="business-dots"></div>
             </div>
 
-
             <!-- JOB SEEKER SERVICES -->
             <div class="service-category">
                 <h3 class="category-title">For Job Seekers / Candidates</h3>
 
-                <!-- ✅ JOBSEEKER SLIDER -->
                 <div class="slider-wrapper">
 
-                    <button class="slider-btn left" onclick="slideLeft('jobseekers-carousel')">❮</button>
+                    <button class="slider-btn left"
+                        onclick="slideLeft('jobseekers-carousel','jobseekers-dots')">❮</button>
 
                     <div class="services-carousel slider" id="jobseekers-carousel">
 
@@ -288,7 +287,8 @@
 
                     </div>
 
-                    <button class="slider-btn right" onclick="slideRight('jobseekers-carousel')">❯</button>
+                    <button class="slider-btn right"
+                        onclick="slideRight('jobseekers-carousel','jobseekers-dots')">❯</button>
 
                 </div>
 
@@ -298,7 +298,6 @@
         </div>
     </section>
 
-
     <!-- REVIEWS -->
     <section class="reviews" id="reviews">
         <div class="container">
@@ -307,14 +306,13 @@
                 Trust with TalentSmith HR Consultancy in Chandigarh, Mohali, Zirakpur & Panchkula
             </p>
 
-            <!-- ✅ REVIEWS SLIDER -->
             <div class="slider-wrapper">
 
-                <button class="slider-btn left" onclick="slideLeft('reviews-carousel')">❮</button>
+                <button class="slider-btn left"
+                    onclick="slideLeft('reviews-carousel','reviews-dots')">❮</button>
 
                 <div class="services-carousel slider" id="reviews-carousel">
 
-                    <!-- Reviews cards unchanged -->
                     <div class="service-card review-card">
                         <div class="service-icon">⭐⭐⭐⭐⭐</div>
                         <h4>Rohit Sharma – Chandigarh</h4>
@@ -365,7 +363,8 @@
 
                 </div>
 
-                <button class="slider-btn right" onclick="slideRight('reviews-carousel')">❯</button>
+                <button class="slider-btn right"
+                    onclick="slideRight('reviews-carousel','reviews-dots')">❯</button>
 
             </div>
 
@@ -374,10 +373,10 @@
         </div>
     </section>
 
-
     <!-- CONTACT + FOOTER remain unchanged -->
 
     <script src="script.js"></script>
 
 </body>
+
 </html>
