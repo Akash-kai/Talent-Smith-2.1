@@ -1401,4 +1401,74 @@ body.light-mode .footer li {
 body.light-mode .footer a:hover {
   color: var(--primary) !important;
 }
+/* ============================================
+   MANUAL SLIDER STYLE (Like Image)
+============================================ */
+
+.slider-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.slider {
+    display: flex;
+    gap: 2rem;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    padding: 2rem 0;
+}
+
+/* Arrow Buttons */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.15);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    padding: 12px 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    transition: 0.3s;
+}
+
+.slider-btn:hover {
+    background: rgba(0,212,255,0.3);
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Left & Right Position */
+.slider-btn.left {
+    left: -20px;
+}
+
+.slider-btn.right {
+    right: -20px;
+}
+
+/* Dots */
+.slider-dots {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.slider-dots span {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 5px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.slider-dots span.active {
+    background: var(--primary);
+    transform: scale(1.3);
+}
 
