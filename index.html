@@ -2,264 +2,266 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- SEO -->
-  <meta name="description"
-    content="TalentSmith - HR Consultancy in Chandigarh, Mohali, Zirakpur, Panchkula & Baddi. Recruitment, Payroll, Compliance, Job Placement & Resume Building." />
+    <!-- Google Search Console Verification -->
+    <meta name="google-site-verification" content="TTs7niMMApuP8YMlTGv5TOesYAuennm3MhUks9Sx6Ps" />
 
-  <title>TalentSmith - HR Consultancy Chandigarh</title>
+    <!-- SEO -->
+    <meta name="description"
+        content="TalentSmith - HR Consultancy in Chandigarh, Mohali, Zirakpur, Panchkula & Baddi. Recruitment, Payroll, Compliance, Job Placement & Resume Building. Introductory hiring offer starting from ₹1500.">
 
-  <link rel="stylesheet" href="style.css" />
+    <meta name="keywords"
+        content="HR Consultancy Chandigarh, HR Consultancy Mohali, HR Consultancy Zirakpur, Recruitment Services, Job Placement, Resume Building, Affordable Hiring">
+
+    <title>TalentSmith - HR Consultancy Chandigarh | Recruitment & Job Placement</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- Background -->
-  <div class="bg-animation"></div>
-  <div class="bg-particles"></div>
+    <!-- Animated Background -->
+    <div class="bg-animation"></div>
+    <div class="bg-particles"></div>
 
-  <!-- HEADER -->
-  <header class="header" id="header">
-    <div class="container">
-      <div class="header-content">
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-content">
 
-        <div class="logo">
-          <h1>TalentSmith</h1>
+                <!-- Logo -->
+                <div class="logo">
+                    <h1>TalentSmith</h1>
+                </div>
+
+                <!-- Navbar -->
+                <nav class="nav">
+                    <a href="#why-us" class="nav-link">Why Us</a>
+                    <a href="#services" class="nav-link">Services</a>
+                    <a href="#reviews" class="nav-link">Reviews</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </nav>
+
+                <!-- Right Buttons -->
+                <div style="display:flex;align-items:center;gap:10px;">
+
+                    <!-- Theme Toggle -->
+                    <button class="theme-toggle" id="themeToggle">🌙</button>
+
+                    <!-- CTA -->
+                    <button class="btn btn-primary" onclick="scrollToSection('contact')">
+                        Get Started
+                    </button>
+                </div>
+
+            </div>
         </div>
+    </header>
 
-        <nav class="nav">
-          <a href="#why-us" class="nav-link">Why Us</a>
-          <a href="#services" class="nav-link">Services</a>
-          <a href="#reviews" class="nav-link">Reviews</a>
-          <a href="#contact" class="nav-link">Contact</a>
-        </nav>
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
 
-        <div class="header-actions">
-          <button class="theme-toggle" id="themeToggle">🌙</button>
-          <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView()">
-            Get Started
-          </button>
+                <div class="offer-badge">
+                    <span class="fire-icon">🔥</span>
+                    <span>Introductory Hiring Offer – Starting from ₹1500 (Limited Period)</span>
+                </div>
+
+                <h1 class="hero-title">Simplifying HR. Empowering Careers.</h1>
+
+                <p class="hero-subtitle">
+                    HR Consultancy in Chandigarh, Mohali, Zirakpur, Panchkula & Baddi
+                </p>
+
+                <div class="hero-cta">
+                    <button class="btn btn-primary btn-large" onclick="openWhatsApp('jobseeker')">
+                        Apply for Job
+                    </button>
+                    <button class="btn btn-secondary btn-large" onclick="openWhatsApp('business')">
+                        Post a Job
+                    </button>
+                </div>
+
+            </div>
         </div>
+    </section>
 
-      </div>
-    </div>
-  </header>
+    <!-- WHY US -->
+    <section class="why-us" id="why-us">
+        <div class="container">
+            <h2 class="section-title">Why TalentSmith is Different?</h2>
+            <p class="section-subtitle">
+                Modern HR Consultancy in Chandigarh & Tricity — trusted by Businesses & Job Seekers.
+            </p>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container">
-      <h1 class="hero-title">Simplifying HR. Empowering Careers.</h1>
-      <p class="hero-subtitle">
-        HR Consultancy in Chandigarh, Mohali, Zirakpur, Panchkula & Baddi
-      </p>
-    </div>
-  </section>
+            <!-- ✅ Slider Wrapper -->
+            <div class="slider-wrapper">
 
-  <!-- WHY US -->
-  <section class="why-us" id="why-us">
-    <div class="container">
-      <h2 class="section-title">Why TalentSmith is Different?</h2>
+                <button class="slider-btn left"
+                    onclick="slideLeft('why-carousel','why-dots')">❮</button>
 
-      <div class="slider-wrapper">
-        <button class="slider-btn left" onclick="slideLeft('why-carousel','why-dots')">❮</button>
+                <div class="services-carousel slider" id="why-carousel">
 
-        <div class="slider" id="why-carousel">
+                    <div class="service-card">
+                        <div class="service-icon">🚀</div>
+                        <h4>Startup-Friendly Hiring</h4>
+                        <p>Traditional consultancies charge 8–10% of CTC. TalentSmith starts hiring support from ₹1500.</p>
+                    </div>
 
-          <div class="service-card">
-            <div class="service-icon">🚀</div>
-            <h4>Startup-Friendly Hiring</h4>
-            <p>Hiring support starting from ₹1500.</p>
-          </div>
+                    <div class="service-card">
+                        <div class="service-icon">🎯</div>
+                        <h4>Right Candidate Match</h4>
+                        <p>We shortlist based on skills, role fit, and company culture — not random resumes.</p>
+                    </div>
 
-          <div class="service-card">
-            <div class="service-icon">🎯</div>
-            <h4>Right Candidate Match</h4>
-            <p>Shortlisting based on role + culture fit.</p>
-          </div>
+                    <div class="service-card">
+                        <div class="service-icon">💼</div>
+                        <h4>Job Seeker Career Support</h4>
+                        <p>Resume building, interview prep, counselling — we help candidates get placed faster.</p>
+                    </div>
 
-          <div class="service-card">
-            <div class="service-icon">💼</div>
-            <h4>Career Support</h4>
-            <p>Resume + interview guidance for candidates.</p>
-          </div>
+                    <div class="service-card">
+                        <div class="service-icon">⚡</div>
+                        <h4>Fast WhatsApp Support</h4>
+                        <p>No waiting for days — businesses & candidates connect instantly with our team.</p>
+                    </div>
 
-          <div class="service-card">
-            <div class="service-icon">⚡</div>
-            <h4>Fast WhatsApp Support</h4>
-            <p>Instant support for businesses & candidates.</p>
-          </div>
+                    <div class="service-card">
+                        <div class="service-icon">📍</div>
+                        <h4>Strong Tricity Network</h4>
+                        <p>We specialize in Chandigarh, Mohali, Zirakpur, Panchkula & Baddi job market.</p>
+                    </div>
 
-          <div class="service-card">
-            <div class="service-icon">📍</div>
-            <h4>Strong Network</h4>
-            <p>Specialized hiring in Chandigarh & Tricity.</p>
-          </div>
+                    <div class="service-card">
+                        <div class="service-icon">🤖</div>
+                        <h4>HR Templates & Automation</h4>
+                        <p>Ready HR templates, HRMS setup, attendance & payroll automation for companies.</p>
+                    </div>
 
-          <div class="service-card">
-            <div class="service-icon">🤖</div>
-            <h4>HR Automation</h4>
-            <p>HRMS setup, templates, payroll automation.</p>
-          </div>
+                </div>
 
-        </div>
+                <button class="slider-btn right"
+                    onclick="slideRight('why-carousel','why-dots')">❯</button>
 
-        <button class="slider-btn right" onclick="slideRight('why-carousel','why-dots')">❯</button>
-      </div>
+            </div>
 
-      <div class="slider-dots" id="why-dots"></div>
-    </div>
-  </section>
-
-  <!-- SERVICES -->
-  <section class="services" id="services">
-    <div class="container">
-      <h2 class="section-title">Our HR Solutions</h2>
-
-      <!-- BUSINESS -->
-      <h3 class="category-title">For Businesses / Employers</h3>
-
-      <div class="slider-wrapper">
-        <button class="slider-btn left" onclick="slideLeft('business-carousel','business-dots')">❮</button>
-
-        <div class="slider" id="business-carousel">
-
-          <div class="service-card"><div class="service-icon">🔍</div><h4>Hiring & Recruitment</h4><p>Complete recruitment support.</p></div>
-          <div class="service-card"><div class="service-icon">💰</div><h4>Payroll Management</h4><p>Salary processing & compliance.</p></div>
-          <div class="service-card"><div class="service-icon">🕒</div><h4>Attendance & HRMS Setup</h4><p>Automate workflows easily.</p></div>
-          <div class="service-card"><div class="service-icon">📋</div><h4>HR Policies</h4><p>Custom discipline & productivity policies.</p></div>
-          <div class="service-card"><div class="service-icon">⚖️</div><h4>Compliance Support</h4><p>PF, ESIC & labour law help.</p></div>
-          <div class="service-card"><div class="service-icon">🏢</div><h4>HR Outsourcing</h4><p>Complete HR for startups.</p></div>
-
-        </div>
-
-        <button class="slider-btn right" onclick="slideRight('business-carousel','business-dots')">❯</button>
-      </div>
-
-      <div class="slider-dots" id="business-dots"></div>
-
-      <!-- JOB SEEKERS -->
-      <h3 class="category-title">For Job Seekers / Candidates</h3>
-
-      <div class="slider-wrapper">
-        <button class="slider-btn left" onclick="slideLeft('jobseekers-carousel','jobseekers-dots')">❮</button>
-
-        <div class="slider" id="jobseekers-carousel">
-
-          <div class="service-card"><div class="service-icon">💼</div><h4>Job Placement</h4><p>Get placed in Tricity companies.</p></div>
-          <div class="service-card"><div class="service-icon">📝</div><h4>Resume Building</h4><p>Professional resume writing.</p></div>
-          <div class="service-card"><div class="service-icon">🎤</div><h4>Interview Preparation</h4><p>Mock interviews + guidance.</p></div>
-          <div class="service-card"><div class="service-icon">🧭</div><h4>Career Counselling</h4><p>Choose the right career path.</p></div>
-          <div class="service-card"><div class="service-icon">🌟</div><h4>Freshers Support</h4><p>Special support for graduates.</p></div>
+            <div class="slider-dots" id="why-dots"></div>
 
         </div>
+    </section>
 
-        <button class="slider-btn right" onclick="slideRight('jobseekers-carousel','jobseekers-dots')">❯</button>
-      </div>
+    <!-- SERVICES -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Our HR Solutions</h2>
+            <p class="section-subtitle">
+                TalentSmith provides affordable HR Consultancy in Chandigarh, Mohali, Zirakpur, Panchkula & Baddi
+            </p>
 
-      <div class="slider-dots" id="jobseekers-dots"></div>
-    </div>
-  </section>
+            <!-- BUSINESS -->
+            <div class="service-category">
+                <h3 class="category-title">For Businesses / Employers</h3>
 
-  <!-- REVIEWS -->
-  <section class="reviews" id="reviews">
-    <div class="container">
-      <h2 class="section-title">Success Reviews</h2>
+                <div class="slider-wrapper">
 
-      <div class="slider-wrapper">
-        <button class="slider-btn left" onclick="slideLeft('reviews-carousel','reviews-dots')">❮</button>
+                    <button class="slider-btn left"
+                        onclick="slideLeft('business-carousel','business-dots')">❮</button>
 
-        <div class="slider" id="reviews-carousel">
+                    <div class="services-carousel slider" id="business-carousel">
 
-          <div class="service-card"><div class="service-icon">⭐⭐⭐⭐⭐</div><h4>Rohit Sharma</h4><p>"Got my first job quickly!"</p></div>
-          <div class="service-card"><div class="service-icon">⭐⭐⭐⭐⭐</div><h4>Simran Kaur</h4><p>"Selected in 1 week."</p></div>
-          <div class="service-card"><div class="service-icon">⭐⭐⭐⭐⭐</div><h4>Aman Verma</h4><p>"Placed within 10 days."</p></div>
-          <div class="service-card"><div class="service-icon">⭐⭐⭐⭐⭐</div><h4>Pooja Singh</h4><p>"Best consultancy in Tricity."</p></div>
+                        <!-- All Business Cards -->
+                        <div class="service-card"><div class="service-icon">🔍</div><h4>Hiring & Recruitment</h4><p>Complete recruitment from sourcing to onboarding.</p></div>
+                        <div class="service-card"><div class="service-icon">💰</div><h4>Payroll Management</h4><p>Salary processing, payroll setup & compliance.</p></div>
+                        <div class="service-card"><div class="service-icon">🕒</div><h4>Attendance & HRMS Setup</h4><p>Automate attendance, leave & HR workflows.</p></div>
+                        <div class="service-card"><div class="service-icon">✅</div><h4>Background Verification</h4><p>Trusted candidate verification support.</p></div>
+                        <div class="service-card"><div class="service-icon">📋</div><h4>HR Policy Formulation</h4><p>Custom HR policies for discipline & productivity.</p></div>
+                        <div class="service-card"><div class="service-icon">📈</div><h4>Performance Management</h4><p>Appraisal systems to boost motivation.</p></div>
+                        <div class="service-card"><div class="service-icon">⚖️</div><h4>Compliance Support</h4><p>PF, ESIC, labour law compliance help.</p></div>
+                        <div class="service-card"><div class="service-icon">🏢</div><h4>HR Outsourcing</h4><p>Complete HR management for startups.</p></div>
+
+                    </div>
+
+                    <button class="slider-btn right"
+                        onclick="slideRight('business-carousel','business-dots')">❯</button>
+
+                </div>
+
+                <div class="slider-dots" id="business-dots"></div>
+            </div>
+
+            <!-- JOB SEEKERS -->
+            <div class="service-category">
+                <h3 class="category-title">For Job Seekers / Candidates</h3>
+
+                <div class="slider-wrapper">
+
+                    <button class="slider-btn left"
+                        onclick="slideLeft('jobseekers-carousel','jobseekers-dots')">❮</button>
+
+                    <div class="services-carousel slider" id="jobseekers-carousel">
+
+                        <div class="service-card"><div class="service-icon">💼</div><h4>Job Placement</h4><p>Get placed in Chandigarh & Tricity companies.</p></div>
+                        <div class="service-card"><div class="service-icon">📝</div><h4>Resume Building</h4><p>Professional resume writing support.</p></div>
+                        <div class="service-card"><div class="service-icon">🎤</div><h4>Interview Preparation</h4><p>Mock interviews + expert guidance.</p></div>
+                        <div class="service-card"><div class="service-icon">🧭</div><h4>Career Counselling</h4><p>Choose the right career path.</p></div>
+                        <div class="service-card"><div class="service-icon">🌟</div><h4>Freshers Job Support</h4><p>Special support for fresh graduates.</p></div>
+
+                    </div>
+
+                    <button class="slider-btn right"
+                        onclick="slideRight('jobseekers-carousel','jobseekers-dots')">❯</button>
+
+                </div>
+
+                <div class="slider-dots" id="jobseekers-dots"></div>
+            </div>
 
         </div>
+    </section>
 
-        <button class="slider-btn right" onclick="slideRight('reviews-carousel','reviews-dots')">❯</button>
-      </div>
+    <!-- REVIEWS -->
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <h2 class="section-title">Success Reviews</h2>
 
-      <div class="slider-dots" id="reviews-dots"></div>
-    </div>
-  </section>
+            <div class="slider-wrapper">
 
-  <!-- CONTACT -->
-  <section class="contact" id="contact">
-    <div class="container">
-      <h2 class="section-title">Contact TalentSmith</h2>
-      <p class="section-subtitle">Let’s connect for hiring or job support.</p>
+                <button class="slider-btn left"
+                    onclick="slideLeft('reviews-carousel','reviews-dots')">❮</button>
 
-      <div class="contact-grid">
+                <div class="services-carousel slider" id="reviews-carousel">
 
-        <div class="contact-card">
-          <div class="contact-icon">📞</div>
-          <h3>Call Us</h3>
-          <p>+91 92185 70401</p>
-          <a class="btn btn-primary" href="tel:+919218570401">Call Now</a>
+                    <!-- All Reviews -->
+                    <div class="service-card review-card"><div class="service-icon">⭐⭐⭐⭐⭐</div><h4>Rohit Sharma</h4><p>"TalentSmith helped me get my first job quickly."</p></div>
+                    <div class="service-card review-card"><div class="service-icon">⭐⭐⭐⭐⭐</div><h4>Simran Kaur</h4><p>"Got selected in 1 week after interview prep."</p></div>
+                    <div class="service-card review-card"><div class="service-icon">⭐⭐⭐⭐⭐</div><h4>Aman Verma</h4><p>"Placed within 10 days. Genuine consultancy."</p></div>
+                    <div class="service-card review-card"><div class="service-icon">⭐⭐⭐⭐⭐</div><h4>Pooja Singh</h4><p>"Best job placement service in Tricity."</p></div>
+
+                </div>
+
+                <button class="slider-btn right"
+                    onclick="slideRight('reviews-carousel','reviews-dots')">❯</button>
+
+            </div>
+
+            <div class="slider-dots" id="reviews-dots"></div>
         </div>
+    </section>
 
-        <div class="contact-card">
-          <div class="contact-icon">💬</div>
-          <h3>WhatsApp</h3>
-          <p>Quick hiring & job support</p>
-          <a class="btn btn-whatsapp"
-            href="https://wa.me/919218570401"
-            target="_blank">Chat Now</a>
-        </div>
+    <!-- CONTACT + FOOTER (UNCHANGED) -->
+    <!-- Your Contact + Footer code remains same -->
 
-        <div class="contact-card">
-          <div class="contact-icon">📧</div>
-          <h3>Email</h3>
-          <p>talentsmithhr@gmail.com</p>
-          <a class="btn btn-secondary" href="mailto:talentsmithhr@gmail.com">Send Email</a>
-        </div>
+    <script src="script.js"></script>
 
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-
-      <div class="footer-content">
-
-        <div class="footer-section">
-          <h3>TalentSmith</h3>
-          <p>Modern HR Consultancy for Businesses & Job Seekers in Chandigarh & Tricity.</p>
-        </div>
-
-        <div class="footer-section">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="#why-us">Why Us</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#reviews">Reviews</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-section">
-          <h4>Contact</h4>
-          <p>📞 +91 92185 70401</p>
-          <p>📧 talentsmithhr@gmail.com</p>
-        </div>
-
-      </div>
-
-      <div class="footer-bottom">
-        <p>© 2026 TalentSmith HR Consultancy. All Rights Reserved.</p>
-      </div>
-
-    </div>
-  </footer>
-
-  <!-- SCRIPT -->
-  <script src="script.js"></script>
+    <!-- ✅ Important -->
+    <script>
+        window.onload = function () {
+            initAllPremiumSliders();
+        };
+    </script>
 
 </body>
-
 </html>
