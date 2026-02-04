@@ -295,3 +295,77 @@ function scrollToSection(id) {
     section.scrollIntoView({ behavior: "smooth" });
   }
 }
+// ============================================
+// ✅ Premium Carousel (Auto + Manual + Resume)
+// ============================================
+function initAutoCarousels() {
+
+  const carousels = document.querySelectorAll(".services-carousel");
+
+  carousels.forEach(carousel => {
+
+    let interval;
+    let isUserInteracting = false;
+
+    // ✅ Auto Slide Function
+    function startAutoSlide() {
+
+      interval = setInterval(() => {
+
+        if (isUserInteracting) return;
+
+        const firstCard = carousel.querySelector(".service-card");
+        if (!firstCard) return;
+
+        // Dynamic card width + gap
+        const cardWidth = firstCard.offsetWidth;
+        const gap = parseInt(getComputedStyle(carousel).gap) || 0;
+
+        const scrollStep = cardWidth + gap;
+        const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+
+        // Reset when end reached
+        if (carousel.scrollLeft + scrollStep >= maxScroll) {
+          carousel.scrollTo({ left: 0, behavior: "smooth" });
+        } else {
+          carousel.scrollBy({ left: scrollStep, behavior: "smooth" });
+        }
+
+      }, 2500); // Speed (adjust)
+    }
+
+    // ✅ Stop Auto Slide
+    function stopAutoSlide() {
+      clearInterval(interval);
+    }
+
+    // ✅ User Interaction Pause
+    function userPause() {
+
+      isUserInteracting = true;
+      stopAutoSlide();
+
+      // Resume after 4 seconds
+      setTimeout(() => {
+        isUserInteracting = false;
+        startAutoSlide();
+      }, 4000);
+    }
+
+    // Start slider initially
+    startAutoSlide();
+
+    // ✅ Mouse drag / scroll support
+    carousel.addEventListener("mousedown", userPause);
+    carousel.addEventListener("wheel", userPause);
+
+    // ✅ Touch swipe support (Mobile)
+    carousel.addEventListener("touchstart", userPause);
+
+    // ✅ Pause when hover
+    carousel.addEventListener("mouseenter", stopAutoSlide);
+    carousel.addEventListener("mouseleave", startAutoSlide);
+
+  });
+
+}
