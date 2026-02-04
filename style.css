@@ -1435,40 +1435,103 @@ body.light-mode .footer a:hover {
     z-index: 10;
     transition: 0.3s;
 }
+/* ============================================
+   PERFECT CENTER SLIDER (Google Style)
+============================================ */
 
-.slider-btn:hover {
-    background: rgba(0,212,255,0.3);
-    transform: translateY(-50%) scale(1.1);
+.slider-wrapper {
+  position: relative;
+  width: 100%;
+  margin-top: 40px;
 }
 
-/* Left & Right Position */
+/* Carousel Track */
+.slider {
+  display: flex;
+  gap: 2rem;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  padding: 30px 0;
+  justify-content: center;
+}
+
+/* Cards Size Fix */
+.slider .service-card {
+  flex: 0 0 320px;
+}
+
+/* Arrow Buttons */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-size: 2rem;
+  color: white;
+  z-index: 99;
+
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: 0.3s;
+}
+
+.slider-btn:hover {
+  background: rgba(0, 212, 255, 0.35);
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Proper Arrow Placement */
 .slider-btn.left {
-    left: -20px;
+  left: -70px;
 }
 
 .slider-btn.right {
-    right: -20px;
+  right: -70px;
 }
 
-/* Dots */
+/* Dots Center */
 .slider-dots {
-    text-align: center;
-    margin-top: 10px;
+  text-align: center;
+  margin-top: 15px;
 }
 
 .slider-dots span {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    margin: 5px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.3);
-    cursor: pointer;
-    transition: 0.3s;
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.3);
+  display: inline-block;
+  margin: 6px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 .slider-dots span.active {
-    background: var(--primary);
-    transform: scale(1.3);
+  background: var(--primary);
+  transform: scale(1.4);
+}
+
+/* Responsive Mobile Fix */
+@media (max-width: 768px) {
+  .slider-btn.left {
+    left: 5px;
+  }
+
+  .slider-btn.right {
+    right: 5px;
+  }
+
+  .slider .service-card {
+    flex: 0 0 85%;
+  }
 }
 
