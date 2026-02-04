@@ -1,6 +1,6 @@
 // ============================================
-// TALENTSMITH - BEST FINAL JAVASCRIPT
-// Clean + Responsive + No Bugs
+// TALENTSMITH - FINAL JAVASCRIPT
+// Manual Slider + Dots + Clean Website Functions
 // ============================================
 
 let currentCategory = "";
@@ -15,8 +15,10 @@ document.addEventListener("DOMContentLoaded", () => {
   initThemeToggle();
   initSmoothScroll();
   initScrollAnimations();
-  initAutoCarousels();
   initServiceModalForm();
+
+  // ✅ Manual Sliders Setup
+  initManualSliders();
 
 });
 
@@ -62,11 +64,10 @@ function initThemeToggle() {
 
 
 // ============================================
-// ✅ Smooth Scroll Navigation + Buttons
+// ✅ Smooth Scroll Navigation
 // ============================================
 function initSmoothScroll() {
 
-  // Navbar anchor smooth scroll
   document.querySelectorAll("a[href^='#']").forEach(link => {
 
     link.addEventListener("click", (e) => {
@@ -96,53 +97,7 @@ function scrollToSection(id) {
   const section = document.getElementById(id);
   if (!section) return;
 
-  window.scrollTo({
-    top: section.offsetTop - 90,
-    behavior: "smooth"
-  });
-
-}
-
-
-// ============================================
-// ✅ Auto Sliding Carousel (Services + Reviews)
-// ============================================
-function initAutoCarousels() {
-
-  const carousels = document.querySelectorAll(".services-carousel");
-
-  carousels.forEach(carousel => {
-
-    let scrollPos = 0;
-    const cardWidth = 332;
-    let paused = false;
-
-    function slide() {
-
-      if (paused) return;
-
-      const maxScroll = carousel.scrollWidth - carousel.clientWidth;
-      scrollPos += cardWidth;
-
-      if (scrollPos >= maxScroll) {
-        scrollPos = 0;
-      }
-
-      carousel.scrollTo({
-        left: scrollPos,
-        behavior: "smooth"
-      });
-
-    }
-
-    // Auto Slide
-    let interval = setInterval(slide, 3200);
-
-    // Pause on Hover
-    carousel.addEventListener("mouseenter", () => paused = true);
-    carousel.addEventListener("mouseleave", () => paused = false);
-
-  });
+  section.scrollIntoView({ behavior: "smooth" });
 
 }
 
@@ -252,7 +207,6 @@ function initServiceModalForm() {
       return;
     }
 
-    // ✅ Your WhatsApp Number
     const businessNumber = "919218570401";
 
     const message =
@@ -276,8 +230,7 @@ function initServiceModalForm() {
 
   });
 
-
-  // Close modal when clicking outside box
+  // Close modal when clicking outside
   window.addEventListener("click", (e) => {
 
     const modal = document.getElementById("serviceModal");
@@ -289,10 +242,92 @@ function initServiceModalForm() {
   });
 
 }
-function scrollToSection(id) {
-  const section = document.getElementById(id);
-  if (section) {
-    section.scrollIntoView({ behavior: "smooth" });
-  }
+
+
+// ============================================
+// ✅ MANUAL SLIDER SYSTEM (Arrows + Dots)
+// ============================================
+
+// Slide Right
+function slideRight(id) {
+
+  const slider = document.getElementById(id);
+  if (!slider) return;
+
+  const card = slider.querySelector(".service-card");
+  if (!card) return;
+
+  const step = card.offsetWidth + 32;
+
+  slider.scrollBy({
+    left: step,
+    behavior: "smooth"
+  });
+
 }
 
+// Slide Left
+function slideLeft(id) {
+
+  const slider = document.getElementById(id);
+  if (!slider) return;
+
+  const card = slider.querySelector(".service-card");
+  if (!card) return;
+
+  const step = card.offsetWidth + 32;
+
+  slider.scrollBy({
+    left: -step,
+    behavior: "smooth"
+  });
+
+}
+
+
+// ============================================
+// ✅ DOTS SETUP
+// ============================================
+function setupDots(sliderId, dotsId) {
+
+  const slider = document.getElementById(sliderId);
+  const dotsBox = document.getElementById(dotsId);
+
+  if (!slider || !dotsBox) return;
+
+  const cards = slider.querySelectorAll(".service-card");
+  dotsBox.innerHTML = "";
+
+  cards.forEach((_, index) => {
+
+    const dot = document.createElement("span");
+
+    dot.addEventListener("click", () => {
+
+      const cardWidth = cards[0].offsetWidth + 32;
+
+      slider.scrollTo({
+        left: index * cardWidth,
+        behavior: "smooth"
+      });
+
+    });
+
+    dotsBox.appendChild(dot);
+
+  });
+
+}
+
+
+// ============================================
+// ✅ INIT ALL SLIDERS
+// ============================================
+function initManualSliders() {
+
+  setupDots("why-carousel", "why-dots");
+  setupDots("business-carousel", "business-dots");
+  setupDots("jobseekers-carousel", "jobseekers-dots");
+  setupDots("reviews-carousel", "reviews-dots");
+
+}
