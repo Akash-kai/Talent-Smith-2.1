@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jobs | TalentSmith</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #020617;
+  color: white;
+}
+
+/* SECTION */
+.jobs-section {
+  padding: 60px 20px;
+}
+
+/* HEADER */
+.jobs-header {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.jobs-title {
+  font-size: 36px;
+  color: #22d3ee;
+  margin: 0;
+}
+
+.jobs-subtitle {
+  color: #9ca3af;
+  margin-top: 6px;
+}
+
+/* POST JOB BUTTON */
+.post-job-btn {
+  background: linear-gradient(90deg,#22d3ee,#06b6d4);
+  color: black;
+  padding: 12px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 0 12px rgba(34,211,238,0.4);
+}
+
+/* JOB GRID */
+.jobs-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+  gap: 25px;
+  max-width: 1100px;
+  margin: 40px auto 0;
+}
+
+/* JOB CARD */
+.job-card {
+  background: #0f172a;
+  padding: 25px;
+  border-radius: 16px;
+  border: 1px solid rgba(34,211,238,0.2);
+  box-shadow: 0 0 20px rgba(34,211,238,0.08);
+  transition: 0.3s;
+}
+
+.job-card:hover {
+  transform: translateY(-6px);
+}
+
+.job-card h3 {
+  color: #22d3ee;
+  margin-top: 0;
+}
+
+.job-info {
+  color: #9ca3af;
+  margin: 6px 0;
+}
+
+/* APPLY BUTTON */
+.apply-btn {
+  display: inline-block;
+  margin-top: 12px;
+  background: #22d3ee;
+  color: black;
+  padding: 8px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+}
+</style>
+</head>
+
+<body>
+
+<section class="jobs-section">
+
+  <!-- HEADER -->
+  <div class="jobs-header">
+    <div>
+      <h2 class="jobs-title">Latest Job Openings</h2>
+      <p class="jobs-subtitle">Opportunities from trusted companies in Tricity</p>
+    </div>
+
+    <a 
+      class="post-job-btn"
+      href="https://wa.me/919218570401?text=Hello%20Talentsmith,%20I%20want%20to%20post%20a%20job.%0A%0AJob%20Title:%0ACompany:%0ALocation:%0ASalary:%0AExperience:"
+      target="_blank">
+      + Post a Job
+    </a>
+  </div>
+
+  <!-- JOB CARDS -->
+  <div class="jobs-container" id="jobsContainer"></div>
+
+</section>
+
+<script>
+const jobs = [
+  {
+    title: "Angular Frontend Developer",
+    company: "IT Company",
+    location: "Mohali",
+    salary: "Depends on Interview"
+  },
+  {
+    title: "HR Executive",
+    company: "Growing Startup",
+    location: "Chandigarh",
+    salary: "₹15,000 – ₹25,000"
+  },
+  {
+    title: "Laravel Developer",
+    company: "IT Company",
+    location: "Mohali",
+    salary: "Depends on Interview"
+  }
+];
+
+const container = document.getElementById("jobsContainer");
+
+jobs.forEach(job => {
+  container.innerHTML += `
+    <div class="job-card">
+      <h3>${job.title}</h3>
+      <p class="job-info">Company: ${job.company}</p>
+      <p class="job-info">Location: ${job.location}</p>
+      <p class="job-info">Salary: ${job.salary}</p>
+
+      <a 
+        class="apply-btn"
+        href="https://wa.me/919218570401?text=I am interested in ${job.title} role at ${job.company}"
+        target="_blank">
+        Apply
+      </a>
+    </div>
+  `;
+});
+</script>
+
+</body>
+</html>
