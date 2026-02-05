@@ -7,7 +7,7 @@ let currentCategory = "";
 let currentService = "";
 
 // ============================================
-// ✅ DOM READY
+// ✅ DOM READYccc
 // ============================================
 document.addEventListener("DOMContentLoaded", () => {
 
