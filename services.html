@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services | TalentSmith</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+/* CLEAN GRID */
+.services-carousel{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:28px;
+    margin-top:30px;
+}
+
+@media(max-width:1100px){
+    .services-carousel{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:600px){
+    .services-carousel{
+        grid-template-columns:1fr;
+    }
+}
+
+/* MORE SPACE = PREMIUM */
+.service-category{
+    margin-top:70px;
+}
+
+/* PREMIUM POPUP */
+.popup{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.7);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+}
+
+.popup-box{
+    background:#0f172a;
+    padding:35px;
+    max-width:520px;
+    border-radius:14px;
+    color:white;
+    position:relative;
+}
+
+.popup-close{
+    position:absolute;
+    top:12px;
+    right:15px;
+    background:none;
+    border:none;
+    color:white;
+    font-size:20px;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg-animation"></div>
+<div class="bg-particles"></div>
+
+<!-- HEADER -->
+<header class="header">
+<div class="container">
+<div class="header-content">
+
+<div class="logo">
+<h1>TalentSmith</h1>
+</div>
+
+<nav class="nav">
+<a href="/index.html#home" class="nav-link">Home</a>
+<a href="/jobs.html" class="nav-link">Jobs</a>
+<a href="/services.html" class="nav-link" style="color:#22d3ee;">Services</a>
+<a href="/review.html" class="nav-link">Reviews</a>
+<a href="/index.html#contact" class="nav-link">Contact</a>
+</nav>
+
+<div style="display:flex;align-items:center;gap:10px;">
+<button class="theme-toggle" id="themeToggle">🌙</button>
+</div>
+
+</div>
+</div>
+</header>
+
+<!-- SERVICES -->
+<section class="services" style="padding-top:140px;">
+<div class="container">
+
+<h2 class="section-title">Our HR Services</h2>
+
+<p style="color:#9ca3af;margin-bottom:10px;text-align:center;">
+Smart HR support to help your company scale with confidence.
+</p>
+
+<!-- BUSINESS -->
+<div class="service-category">
+<h3 class="category-title">For Businesses</h3>
+
+<p style="color:#9ca3af;margin-bottom:10px;text-align:center;">
+Smart HR support to help your company scale with confidence.
+</p>
+
+<div class="services-carousel">
+
+<div class="service-card" onclick="openService('hiring')">
+<div class="service-icon">🔍</div>
+<h4>Hiring & Recruitment</h4>
+</div>
+
+<div class="service-card" onclick="openService('verification')">
+<div class="service-icon">✅</div>
+<h4>Background Verification</h4>
+</div>
+
+<div class="service-card" onclick="openService('templates')">
+<div class="service-icon">🤖</div>
+<h4>HR Templates</h4>
+</div>
+
+<div class="service-card" onclick="openService('attendance')">
+<div class="service-icon">🕒</div>
+<h4>Attendance & HRMS</h4>
+</div>
+
+<div class="service-card" onclick="openService('policy')">
+<div class="service-icon">📋</div>
+<h4>HR Policies</h4>
+</div>
+
+<div class="service-card" onclick="openService('performance')">
+<div class="service-icon">📈</div>
+<h4>Performance Management</h4>
+</div>
+
+<div class="service-card" onclick="openService('allhr')">
+<div class="service-icon">🏢</div>
+<h4>All-in-One HR Setup</h4>
+</div>
+
+<div class="service-card" onclick="openService('payroll')">
+<div class="service-icon">💰</div>
+<h4>Payroll Management</h4>
+</div>
+
+</div>
+</div>
+
+<!-- JOB SEEKERS -->
+<div class="service-category">
+<h3 class="category-title">For Job Seekers</h3>
+
+<p style="color:#9ca3af;margin-bottom:10px;text-align:center;">
+Career-focused services to help you get hired faster.
+</p>
+
+<div class="services-carousel">
+
+<div class="service-card" onclick="openService('resume')">
+<div class="service-icon">📝</div>
+<h4>Resume Building</h4>
+</div>
+
+<div class="service-card" onclick="openService('placement')">
+<div class="service-icon">💼</div>
+<h4>Job Placement</h4>
+</div>
+
+<div class="service-card" onclick="openService('interview')">
+<div class="service-icon">🎤</div>
+<h4>Interview Preparation</h4>
+</div>
+
+<div class="service-card" onclick="openService('career')">
+<div class="service-icon">🧭</div>
+<h4>Career Counselling</h4>
+</div>
+
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- POPUP -->
+<div id="popup" class="popup">
+<div class="popup-box">
+
+<button class="popup-close" onclick="closeService()">✖</button>
+
+<h2 id="popupTitle"></h2>
+<p id="popupDesc" style="color:#cbd5e1;margin-top:10px;"></p>
+
+<ul id="popupPoints" style="margin-top:15px;line-height:1.8;"></ul>
+
+<div style="margin-top:20px;">
+<a id="popupWhatsapp" class="btn btn-primary" target="_blank">
+Enquire on WhatsApp
+</a>
+</div>
+
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="container">
+<div class="footer-content">
+
+<div class="footer-section">
+<h3>TalentSmith</h3>
+<p>Simplifying HR. Empowering Careers.</p>
+</div>
+
+<div class="footer-section">
+<h4>Quick Links</h4>
+<ul>
+<li><a href="/index.html">Home</a></li>
+<li><a href="/jobs.html">Jobs</a></li>
+<li><a href="/services.html">Services</a></li>
+<li><a href="/review.html">Reviews</a></li>
+</ul>
+</div>
+
+<div class="footer-section">
+<h4>Contact</h4>
+<p>info@talentsmith.co.in</p>
+<p>+91 9218570401</p>
+</div>
+
+</div>
+
+<div class="footer-bottom">
+© 2026 TalentSmith. All rights reserved.
+</div>
+</div>
+</footer>
+
+<script>
+function openService(type){
+
+const data={
+hiring:["Hiring & Recruitment","We help you hire the right people faster.",["Sourcing","Screening","Shortlisting","Onboarding"]],
+verification:["Background Verification","Safe and trusted hiring process.",["ID checks","Company checks","Reference checks"]],
+templates:["HR Templates","Ready HR formats & tools.",["Offer letters","Policies","Warning letters"]],
+attendance:["Attendance & HRMS","Modern attendance systems.",["Biometric setup","Leave tracking","Reports"]],
+policy:["HR Policies","Structured company policies.",["Leave policy","Code of conduct","Rules"]],
+performance:["Performance Management","Employee growth tracking.",["KPI setup","Appraisal format","Reviews"]],
+allhr:["All-in-One HR Setup","Complete HR support.",["Hiring","Policies","HRMS","Payroll"]],
+payroll:["Payroll Management","Smooth salary processing.",["Payslips","Compliance","PF/ESI"]],
+resume:["Resume Building","Professional ATS resumes.",["Modern format","Keyword optimized"]],
+placement:["Job Placement","Direct job opportunities.",["Startup jobs","Remote roles"]],
+interview:["Interview Preparation","Mock interview training.",["HR round prep","Confidence building"]],
+career:["Career Counselling","Career growth guidance.",["Path planning","Skill advice"]]
+};
+
+const s=data[type];
+
+document.getElementById("popupTitle").innerText=s[0];
+document.getElementById("popupDesc").innerText=s[1];
+
+let ul="";
+s[2].forEach(p=>ul+=`<li>✔ ${p}</li>`);
+document.getElementById("popupPoints").innerHTML=ul;
+
+document.getElementById("popupWhatsapp").href=
+"https://wa.me/919218570401?text=Hi, I want details about "+s[0];
+
+document.getElementById("popup").style.display="flex";
+}
+
+function closeService(){
+document.getElementById("popup").style.display="none";
+}
+</script>
+
+<script src="script.js"></script>
+</body>
+</html>
